@@ -1,11 +1,13 @@
 var s2 = require('s2'),
 fc = require('turf-featurecollection'),
 geocolor = require('geocolor')
+center = require('turf-center')
+linestring = require('turf-linestring')
 
-var ll = new s2.S2LatLngRect(new s2.S2LatLng(10, 10), new s2.S2LatLng(11.1, 11.1));
+var ll = new s2.S2LatLngRect(new s2.S2LatLng(10, 10), new s2.S2LatLng(11, 11));
 
 var llcover = s2.getCover(ll, {
-    max_cells: 300,
+    max_cells: 30,
     min:12,
     max:2
 });
@@ -29,6 +31,17 @@ for(var i=0;i<cells.features.length;i++){
 	cells.features[i].properties.rank = i+1
 }
 
-var coloredCells = geocolor.jenks(cells, 'rank', 100, ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet','red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'])
+var coloredCells = geocolor.jenks(cells, 'rank', 100, ['white', 'blue'])
+
+//console.log(JSON.stringify(coloredCells))
+
+
+var hilburt = fc([linestring([])])
+
+coloredCells.features.forEach(function(cell){
+	hilburt.features[0].geometry.coordinates.push(center(cell).geometry.coordinates)
+})
+
+coloredCells.features = coloredCells.features.concat(hilburt.features)
 
 console.log(JSON.stringify(coloredCells))
