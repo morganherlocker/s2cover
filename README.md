@@ -1,4 +1,4 @@
 cover-extract
 =============
 
-extract an s2 covering from a polygon to geojson cells
+creates a colorfol geojson hilburt curve using [node-s2](https://github.com/mapbox/node-s2)
