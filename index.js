@@ -33,11 +33,8 @@ for(var i=0;i<cells.features.length;i++){
 
 var coloredCells = geocolor.jenks(cells, 'rank', 100, ['white', 'blue'])
 
-//console.log(JSON.stringify(coloredCells))
-
 
 var hilburt = fc([linestring([])])
-
 coloredCells.features.forEach(function(cell){
 	hilburt.features[0].geometry.coordinates.push(center(cell).geometry.coordinates)
 })
