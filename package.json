@@ -1,0 +1,25 @@
+{
+  "name": "cover-extract",
+  "version": "0.0.0",
+  "description": "cover-extract =============",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/morganherlocker/cover-extract.git"
+  },
+  "keywords": [
+    "s2"
+  ],
+  "author": "morganherlocker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morganherlocker/cover-extract/issues"
+  },
+  "homepage": "https://github.com/morganherlocker/cover-extract",
+  "dependencies": {
+    "s2": "^0.3.1"
+  }
+}
