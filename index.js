@@ -30,7 +30,7 @@ else{
 
 	//create a bounding box to be covered
 	if(!ll){
-		ll = new s2.S2LatLngRect(new s2.S2LatLng(22.500496, -126.562500), new s2.S2LatLng(47.544554, -65.039063));
+		//ll = new s2.S2LatLngRect(new s2.S2LatLng(22.500496, -126.562500), new s2.S2LatLng(47.544554, -65.039063));
 	}
 
 	//compute cover
