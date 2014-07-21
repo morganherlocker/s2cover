@@ -3,14 +3,35 @@ var s2 = require('s2'),
 	fc = require('turf-featurecollection'),
 	geocolor = require('geocolor'),
 	center = require('turf-center'),
-	linestring = require('turf-linestring')
+	linestring = require('turf-linestring'),
+	fs = require('fs')
 
 if(argv.h || argv.help){
-	help()
+	help();
 }
 else{
+	var ll;
+	var geojson = fs.readFileSync(argv._[0]);
+
+	if(geojson.type === 'Point'){
+        ll = new s2.S2LatLng(geojson.coordinates[0], 
+                        geojson.coordinates[1]);
+    }
+    else if(geojson.type === 'LineString'){
+        ll = geojson.coordinates.map(function(p) {
+                return (new s2.S2LatLng(p[0], p[1])).normalized().toPoint();
+            });
+    }
+    else if(geojson.type === 'Polygon'){
+        ll = geojson.coordinates[0].map(function(p) {
+                return (new s2.S2LatLng(p[0], p[1])).normalized().toPoint();
+            });
+    }
+
 	//create a bounding box to be covered
-	var ll = new s2.S2LatLngRect(new s2.S2LatLng(32.500496, -126.562500), new s2.S2LatLng(47.544554, -65.039063));
+	if(!ll){
+		ll = new s2.S2LatLngRect(new s2.S2LatLng(22.500496, -126.562500), new s2.S2LatLng(47.544554, -65.039063));
+	}
 
 	//compute cover
 	var llcover = s2.getCover(ll, {
