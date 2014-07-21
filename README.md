@@ -1,7 +1,7 @@
 s2Cover
 =============
 
-A tiny cli for extracting [node-s2](https://github.com/mapbox/node-s2) cell covers with cell info, and index order visualization.
+A tiny cli for extracting [node-s2](https://github.com/mapbox/node-s2) cell covers with cell info and index order visualization.
 
 ###install
 
