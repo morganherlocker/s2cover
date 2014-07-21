@@ -13,10 +13,10 @@ npm install s2cover -g
 
 ```sh
 # read a geojson file
-s2Cover ./poly.geojson | geojsonio
+s2cover ./poly.geojson | geojsonio
 ```
 
 ```sh
 # pipe in geojson
-cat poly.geojson | s2Cover | geojsonio
+cat poly.geojson | s2cover | geojsonio
 ```
