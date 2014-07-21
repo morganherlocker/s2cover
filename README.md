@@ -25,5 +25,5 @@ cat poly.geojson | s2cover | geojsonio
 ```sh
 -h --help : show options and usage
 -l --line : draw a hilburt curve throught the cells by index order
--c --color color the cells from white->blue by index order
+-c --color color the cells from white->purple by index order
 ```

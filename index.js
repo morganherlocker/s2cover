@@ -56,7 +56,7 @@ else{
 		//concat the cells with the curve
 		cells.features = cells.features.concat(hilburt.features)
 	}
-	
+
 	console.log(JSON.stringify(cells))
 }
 
@@ -67,7 +67,7 @@ function help(){
 	h+='===\n\n'
 	h+='-h --help : show options and usage\n'
 	h+='-l --line : draw a hilburt curve throught the cells by index order\n'
-	h+='-c --color color the cells from white->blue by index order\n\n'
+	h+='-c --color color the cells from white->purple by index order\n\n'
 	h+='example: s2cover myFile.geojson\n'
 	h+='\n\n\x1B[1m\x1B[31m           \\\n'
 	h+='         /\\/\n'
