@@ -21,7 +21,11 @@
   },
   "homepage": "https://github.com/morganherlocker/cover-extract",
   "dependencies": {
+    "geocolor": "0.0.16",
     "minimist": "^0.2.0",
-    "s2": "^0.3.1"
+    "s2": "^0.3.1",
+    "turf-center": "^0.1.1",
+    "turf-featurecollection": "^0.1.0",
+    "turf-linestring": "^0.1.1"
   }
 }
