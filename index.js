@@ -38,22 +38,26 @@ else{
 	for(var i=0;i<cells.features.length;i++){
 		cells.features[i].properties.rank = i+1
 	}
-	//color cells
-	var coloredCells = geocolor.jenks(cells, 'rank', 100, ['white', 'purple'], 
-		{'fill-opacity':.5, 'stroke-width':1})
+	if(argv.c || argv.color){
+		//color cells
+		var cells = geocolor.jenks(cells, 'rank', 100, ['white', 'purple'], 
+			{'fill-opacity':.5, 'stroke-width':1})
+	}
 
-	//calculate hilburt curve by creating a linestring with vertices from the center of each cell in order
-	var hilburt = fc([linestring([])])
-	coloredCells.features.forEach(function(cell){
-		hilburt.features[0].geometry.coordinates.push(center(cell).geometry.coordinates)
-	})
-	hilburt.features[0].properties = {}
-	hilburt = geocolor.all(hilburt, {'stroke':'red'})
+	if(argv.l || argv.line){
+		//calculate hilburt curve by creating a linestring with vertices from the center of each cell in order
+		var hilburt = fc([linestring([])])
+		cells.features.forEach(function(cell){
+			hilburt.features[0].geometry.coordinates.push(center(cell).geometry.coordinates)
+		})
+		hilburt.features[0].properties = {}
+		hilburt = geocolor.all(hilburt, {'stroke':'red'})
 
-	//concat the cells with the curve
-	coloredCells.features = coloredCells.features.concat(hilburt.features)
-
-	console.log(JSON.stringify(coloredCells))
+		//concat the cells with the curve
+		cells.features = cells.features.concat(hilburt.features)
+	}
+	
+	console.log(JSON.stringify(cells))
 }
 
 function help(){

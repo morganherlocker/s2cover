@@ -20,3 +20,10 @@ s2cover ./poly.geojson | geojsonio
 # pipe in geojson
 cat poly.geojson | s2cover | geojsonio
 ```
+
+###options
+```sh
+-h --help : show options and usage
+-l --line : draw a hilburt curve throught the cells by index order
+-c --color color the cells from white->blue by index order
+```
