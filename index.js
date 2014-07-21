@@ -1,7 +1,8 @@
 var s2 = require('s2'),
+	argv = require('minimist')(process.argv.slice(2)),
 	fc = require('turf-featurecollection'),
-	geocolor = require('geocolor')
-	center = require('turf-center')
+	geocolor = require('geocolor'),
+	center = require('turf-center'),
 	linestring = require('turf-linestring')
 
 //create a bounding box to be covered

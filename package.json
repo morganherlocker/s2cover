@@ -1,8 +1,9 @@
 {
-  "name": "cover-extract",
+  "name": "s2cover",
   "version": "0.0.0",
   "description": "cover-extract =============",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/morganherlocker/cover-extract",
   "dependencies": {
+    "minimist": "^0.2.0",
     "s2": "^0.3.1"
   }
 }
