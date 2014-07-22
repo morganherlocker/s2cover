@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 var s2 = require('s2'),
 	argv = require('minimist')(process.argv.slice(2)),
 	fc = require('turf-featurecollection'),
