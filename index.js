@@ -47,7 +47,7 @@ else{
 	}
 	if(argv.c || argv.color){
 		//color cells
-		var cells = geocolor.jenks(cells, 'rank', 100, ['white', 'purple'], 
+		var cells = geocolor.jenks(cells, 'rank', 50, ['white', 'purple'], 
 			{'fill-opacity':.5, 'stroke-width':1})
 	}
 
