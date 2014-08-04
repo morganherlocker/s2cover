@@ -5,39 +5,16 @@ var s2 = require('s2'),
 	geocolor = require('geocolor'),
 	center = require('turf-center'),
 	linestring = require('turf-linestring'),
-	fs = require('fs')
+	fs = require('fs'),
+	cover = require('geojson-cover')
 
 if(argv.h || argv.help){
 	help();
 }
 else{
 	var geojson = JSON.parse(fs.readFileSync(argv._[0]));
-	var ll = s2.fromGeojson(geojson);
+	var cells = cover.geometryGeoJSON(geojson);
 
-	//create a bounding box to be covered
-	if(!ll & !argv._[0]){
-		ll = new s2.S2LatLngRect(new s2.S2LatLng(22.500496, -126.562500), new s2.S2LatLng(47.544554, -65.039063));
-	}
-
-	//compute cover
-	var llcover = s2.getCover(ll, {
-	    max_cells: 300,
-	    min:1,
-	    max:8,
-	    type: 'polygon'
-	});
-
-	//convert cover to geojson
-	var cells = fc([])
-	cells.features = llcover.map(function(cover){
-		return {
-			type: 'Feature',
-			geometry: cover.toGeoJSON(),
-			properties: {
-				id: cover.id().toToken()
-			}
-		}
-	})
 	//sort cells by alphanumeric token
 	cells.features.sort(function(a,b){
 		return b-a;
